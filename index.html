@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Погода</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="title">Погода</h1>
+    <button id="btnRefresh" class="btn">Обновить</button>
+  </header>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="block">
+        <div class="block-title">Локации</div>
+        <ul id="locationsList" class="locations"></ul>
+      </div>
+
+      <div class="block">
+        <div class="block-title" id="formTitle">Добавить город</div>
+
+        <form id="cityForm" autocomplete="off">
+          <input id="cityInput" class="input" type="text" placeholder="Начни писать город..." />
+          <div id="suggestions" class="suggestions"></div>
+          <div id="cityError" class="field-error"></div>
+          <button id="citySubmit" class="btn" type="submit">Добавить</button>
+        </form>
+
+        <div class="hint">
+          Если гео не разрешили — просто добавь город.
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div id="status" class="status"></div>
+      <div id="weatherView" class="weather"></div>
+    </main>
+  </div>
+
+  <footer class="footer">Данные: Open-Meteo</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
