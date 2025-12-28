@@ -223,11 +223,24 @@ function renderSuggestions(value) {
 
 function makeCityLabel(x) {
   var parts = [];
-  if (x.name) parts.push(x.name);
-  if (x.admin1) parts.push(x.admin1);
-  if (x.country) parts.push(x.country);
+  var seen = {};
+
+  function add(val) {
+    var s = (val || '').trim();
+    if (!s) return;
+    var key = s.toLowerCase();
+    if (seen[key]) return;
+    seen[key] = true;
+    parts.push(s);
+  }
+
+  add(x.name);
+  add(x.admin1);
+  add(x.country);
+
   return parts.join(', ');
 }
+
 
 function geocodeFirst(name) {
   var url =
@@ -549,3 +562,4 @@ function escapeHtml(s) {
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 }
+
